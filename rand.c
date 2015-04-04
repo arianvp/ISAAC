@@ -56,7 +56,11 @@ isaac_init(struct randctx *ctx, int32_t *seed, size_t cnt)
   {
     return 0;
   }
-  memcpy(ctx->results, seed, cnt);
+
+  for (i = 0; i < cnt; i++)
+  {
+    ctx->results[i] = seed[i];
+  }
 
   a=b=c=d=e=f=g=h=0x9e3779b9;
 
