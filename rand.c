@@ -48,6 +48,9 @@ static void isaac(struct randctx *ctx)
 extern int
 isaac_init(struct randctx *ctx, int32_t *seed, size_t cnt)
 {
+  int i;
+  register uint32_t a,b,c,d,e,f,g,h;
+
   memset(ctx, 0, sizeof(struct randctx));
   if (cnt > 255)
   {
@@ -55,10 +58,8 @@ isaac_init(struct randctx *ctx, int32_t *seed, size_t cnt)
   }
   memcpy(ctx->results, seed, cnt);
 
-  register uint32_t a,b,c,d,e,f,g,h;
   a=b=c=d=e=f=g=h=0x9e3779b9;
 
-  int i;
   for (i = 0; i < 4; i++)
   {
     MIX(a,b,c,d,e,f,g,h);
