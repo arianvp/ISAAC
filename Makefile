@@ -1,22 +1,18 @@
-CFLAGS= -g -O3 -ansi -pedantic -Wall -Wextra -Wno-unused-parameter
-
-ifneq ($(OS), Windows_NT)
-	CFLAGS += -fPIC
-
-	ifeq ($(shell uname), Darwin)
-		LDFLAGS += -dynamiclib -undefined dynamic_lookup
-	endif
-endif
+CFLAGS= -g -O3 -ansi -pedantic -Wall -Wextra -Wno-unused-parameter -c
 
 .PHONY: all clean
 
-all: libisaac.so
+all: libisaac.a
 
-libisaac.so: rand.c
-	$(CC) $(CFLAGS) -shared $(LDFLAGS) -o $@ rand.c
+libisaac.a: rand.o
+	$(AR) rcs libisaac.a $^
+
+
+rand.o: rand.c
+	$(CC) $^ $(CFLAGS) -o $@
 
 clean:
-	$(RM) libisaac.so
+	$(RM) libisaac.a rand.o
 
 
 
