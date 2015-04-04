@@ -10,13 +10,13 @@ endif
 
 .PHONY: all clean
 
-all: isaac.so
+all: libisaac.so
 
-isaac.so: rand.c
+libisaac.so: rand.c
 	$(CC) $(CFLAGS) -shared $(LDFLAGS) -o $@ rand.c
 
 clean:
-	$(RM) isaac.so
+	$(RM) libisaac.so
 
 
 
