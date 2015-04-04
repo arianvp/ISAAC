@@ -1,4 +1,4 @@
-CFLAGS= -g -O3 -ansi -pedantic -Wall -Wextra -Wno-unused-parameter -c
+CFLAGS= -g -O3 -ansi -fPIC -pedantic -Wall -Wextra -Wno-unused-parameter -c
 
 .PHONY: all clean
 
