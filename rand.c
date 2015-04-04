@@ -14,7 +14,8 @@
 }
 
 
-static void isaac(struct randctx *ctx)
+static void
+isaac(struct randctx *ctx)
 {
   register uint32_t i,x,y;
   ctx->cc++;
@@ -48,7 +49,7 @@ static void isaac(struct randctx *ctx)
 extern int
 isaac_init(struct randctx *ctx, int32_t *seed, size_t cnt)
 {
-  int i;
+  size_t i;
   register uint32_t a,b,c,d,e,f,g,h;
 
   memset(ctx, 0, sizeof(struct randctx));
